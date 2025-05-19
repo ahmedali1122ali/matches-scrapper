@@ -9,12 +9,12 @@ const scrapeMatchesFromUrl = async (url, page) => {
     const matchCards = container.querySelectorAll('.matchCard.matchesList');
     const allMatches = [];
 
-    matchCards.forEach(card => {
+    matchCards.forEach((card) => {
       const league = card.querySelector('.tourTitle h2')?.innerText.trim();
       const leagueLogo = card.querySelector('.tourTitle .imgCntnr img')?.src;
       const matchItems = card.querySelectorAll('.item.liItem');
 
-      matchItems.forEach(item => {
+      matchItems.forEach((item) => {
         const teamA = item.querySelector('.teams.teamA p')?.innerText.trim();
         const teamAImg = item.querySelector('.teams.teamA img')?.src;
 
@@ -42,7 +42,7 @@ const scrapeMatchesFromUrl = async (url, page) => {
           matchTime,
           matchStatus,
           matchDate,
-          channel: channel || 'Not specified'
+          channel: channel || 'Not specified',
         });
       });
     });
@@ -52,7 +52,11 @@ const scrapeMatchesFromUrl = async (url, page) => {
 };
 
 const scrapper = async () => {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({
+    headless: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    defaultViewport: null,
+  });
   const page = await browser.newPage();
 
   const date = new Date();
@@ -67,7 +71,7 @@ const scrapper = async () => {
   const urls = {
     today: 'https://www.yallakora.com/match-center',
     yesterday: `https://www.yallakora.com/match-center?date=${formatted(-1)}#days`,
-    tomorrow: `https://www.yallakora.com/match-center?date=${formatted(1)}#days`
+    tomorrow: `https://www.yallakora.com/match-center?date=${formatted(1)}#days`,
   };
 
   const results = {};
@@ -87,9 +91,7 @@ const scrapper = async () => {
   await browser.close();
 
   console.log(`✅ Scraping completed. Summary:`);
-  Object.entries(results).forEach(([key, val]) =>
-    console.log(`${key}: ${val.length} matches`)
-  );
+  Object.entries(results).forEach(([key, val]) => console.log(`${key}: ${val.length} matches`));
 
   return results;
 };
