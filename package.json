@@ -2,6 +2,7 @@
   "name": "match_scraping",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "dependencies": {
     "accepts": "^2.0.0",
     "agent-base": "^7.1.3",
