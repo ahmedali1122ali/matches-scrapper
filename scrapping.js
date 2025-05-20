@@ -1,6 +1,60 @@
 import puppeteer from 'puppeteer';
 
-const scrapeMatchesFromUrl = async (url, page) => {
+const BASE_URL = 'https://www.yallakora.com/match-center';
+
+export async function scrapper() {
+  const browser = await puppeteer.launch({
+    headless: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    defaultViewport: null,
+  });
+  const page = await browser.newPage();
+
+  const urls = {
+    today: BASE_URL,
+    yesterday: `${BASE_URL}?date=${getDateString(-1)}#days`,
+    tomorrow: `${BASE_URL}?date=${getDateString(1)}#days`,
+  };
+
+  const results = {
+    today: [],
+    yesterday: [],
+    tomorrow: [],
+  };
+
+  let isErrored = false;
+
+  for (const [label, url] of Object.entries(urls)) {
+    console.log(`Scraping ${label} from: ${url}`);
+    try {
+      const matches = await scrapeMatchesFromUrl(url, page);
+      console.log(`→ Found ${matches.length} matches for ${label}`);
+      results[label] = matches;
+    } catch (error) {
+      isErrored = true;
+      console.error(`Failed to scrape ${label}:`, error.message);
+      results[label] = [];
+    }
+  }
+
+  await browser.close();
+
+  console.log(`✅ Scraping completed. Summary:`);
+  Object.entries(results).forEach(([key, val]) => console.log(`${key}: ${val.length} matches`));
+
+  return {
+    results,
+    isErrored,
+  };
+}
+
+function getDateString(offsetDays) {
+  const date = new Date();
+  date.setDate(date.getDate() + offsetDays);
+  return date.toISOString().split('T')[0];
+}
+
+async function scrapeMatchesFromUrl(url, page) {
   await page.goto(url, { waitUntil: 'networkidle0' });
   await page.waitForSelector('.mtchCntrContainer.maxWidth');
 
@@ -49,51 +103,4 @@ const scrapeMatchesFromUrl = async (url, page) => {
 
     return allMatches;
   });
-};
-
-const scrapper = async () => {
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
-    defaultViewport: null,
-  });
-  const page = await browser.newPage();
-
-  const date = new Date();
-
-  const pad = (n) => n.toString().padStart(2, '0');
-  const formatted = (offsetDays) => {
-    const d = new Date(date);
-    d.setDate(d.getDate() + offsetDays);
-    return `${pad(d.getMonth() + 1)}/${pad(d.getDate())}/${d.getFullYear()}`;
-  };
-
-  const urls = {
-    today: 'https://www.yallakora.com/match-center',
-    yesterday: `https://www.yallakora.com/match-center?date=${formatted(-1)}#days`,
-    tomorrow: `https://www.yallakora.com/match-center?date=${formatted(1)}#days`,
-  };
-
-  const results = {};
-
-  for (const [label, url] of Object.entries(urls)) {
-    console.log(`Scraping ${label} from: ${url}`);
-    try {
-      const matches = await scrapeMatchesFromUrl(url, page);
-      console.log(`→ Found ${matches.length} matches for ${label}`);
-      results[label] = matches;
-    } catch (error) {
-      console.error(`Failed to scrape ${label}:`, error.message);
-      results[label] = [];
-    }
-  }
-
-  await browser.close();
-
-  console.log(`✅ Scraping completed. Summary:`);
-  Object.entries(results).forEach(([key, val]) => console.log(`${key}: ${val.length} matches`));
-
-  return results;
-};
-
-export default scrapper;
+}
