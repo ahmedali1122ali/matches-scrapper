@@ -28,9 +28,14 @@ app.use(cors({ origin: '*' }));
 app.get('/api/matches', async (req, res) => {
   const now = moment().tz(TIMEZONE).valueOf();
 
+  const dontServeCache = req.query['no-cache'] === 'true';
+
   // Check if cache is valid: not expired and not past Cairo midnight
   const isCacheValid =
-    cache.data && now - cache.fetchedAt < CACHE_DURATION_IN_MILLI_SECONDS && now < cache.cairoMidnight;
+    !dontServeCache &&
+    cache.data &&
+    now - cache.fetchedAt < CACHE_DURATION_IN_MILLI_SECONDS &&
+    now < cache.cairoMidnight;
 
   if (isCacheValid) {
     return res.json(cache.data);
