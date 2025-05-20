@@ -6,7 +6,7 @@ import moment from 'moment-timezone';
 const app = express();
 const PORT = 3000;
 
-const CACHE_DURATION_IN_MILLI_SECONDS = 1000 * 60 * 5;
+const CACHE_DURATION_IN_MILLI_SECONDS = 1000 * 60 * 60; // 1hour
 
 const TIMEZONE = 'Africa/Cairo';
 
