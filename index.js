@@ -7,6 +7,7 @@ import { prismaInstance } from './db/prisma-instance.js';
 
 const app = express();
 const PORT = 3000;
+console.log(PORT);
 
 const TIMEZONE = 'Africa/Cairo';
 
