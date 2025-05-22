@@ -7,6 +7,7 @@ export async function scrapper() {
     headless: true,
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
     defaultViewport: null,
+    timeout: 60000,
   });
   const page = await browser.newPage();
 
@@ -22,18 +23,25 @@ export async function scrapper() {
     tomorrow: [],
   };
 
-  let isErrored = false;
-
   for (const [label, url] of Object.entries(urls)) {
     console.log(`Scraping ${label} from: ${url}`);
-    try {
-      const matches = await scrapeMatchesFromUrl(url, page);
-      console.log(`→ Found ${matches.length} matches for ${label}`);
-      results[label] = matches;
-    } catch (error) {
-      isErrored = true;
-      console.error(`Failed to scrape ${label}:`, error.message);
-      results[label] = [];
+    let attempts = 0;
+    let success = false;
+    while (attempts < 3 && !success) {
+      try {
+        const matches = await scrapeMatchesFromUrl(url, page);
+        console.log(`→ Found ${matches.length} matches for ${label}`);
+        results[label] = matches;
+        success = true;
+      } catch (error) {
+        attempts++;
+        if (attempts >= 3) {
+          console.error(`Failed to scrape ${label} after 3 attempts:`, error.message);
+          results[label] = [];
+        } else {
+          console.warn(`Retrying ${label} (${attempts}/3)...`);
+        }
+      }
     }
   }
 
@@ -44,7 +52,6 @@ export async function scrapper() {
 
   return {
     results,
-    isErrored,
   };
 }
 

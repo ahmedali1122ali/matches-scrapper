@@ -1,0 +1,60 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Today {
+  id          Int     @id @default(autoincrement())
+  link        String  @default("#")
+  league      String?
+  leagueLogo  String?
+  teamA       String?
+  teamAImg    String?
+  teamB       String?
+  teamBImg    String?
+  scoreA      String?
+  scoreB      String?
+  matchTime   String?
+  matchStatus String?
+  matchDate   String?
+  channel     String  @default("Not specified")
+}
+
+model Tomorrow {
+  id          Int     @id @default(autoincrement())
+  link        String  @default("#")
+  league      String?
+  leagueLogo  String?
+  teamA       String?
+  teamAImg    String?
+  teamB       String?
+  teamBImg    String?
+  scoreA      String?
+  scoreB      String?
+  matchTime   String?
+  matchStatus String?
+  matchDate   String?
+  channel     String  @default("Not specified")
+}
+
+model Yesterday {
+  id          Int     @id @default(autoincrement())
+  link        String  @default("#")
+  league      String?
+  leagueLogo  String?
+  teamA       String?
+  teamAImg    String?
+  teamB       String?
+  teamBImg    String?
+  scoreA      String?
+  scoreB      String?
+  matchTime   String?
+  matchStatus String?
+  matchDate   String?
+  channel     String  @default("Not specified")
+}
