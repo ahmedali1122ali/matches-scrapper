@@ -680,6 +680,10 @@ export namespace Prisma {
             args: Prisma.TodayCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
+          createManyAndReturn: {
+            args: Prisma.TodayCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TodayPayload>[]
+          }
           delete: {
             args: Prisma.TodayDeleteArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$TodayPayload>
@@ -695,6 +699,10 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.TodayUpdateManyArgs<ExtArgs>
             result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TodayUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TodayPayload>[]
           }
           upsert: {
             args: Prisma.TodayUpsertArgs<ExtArgs>
@@ -746,6 +754,10 @@ export namespace Prisma {
             args: Prisma.TomorrowCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
+          createManyAndReturn: {
+            args: Prisma.TomorrowCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TomorrowPayload>[]
+          }
           delete: {
             args: Prisma.TomorrowDeleteArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$TomorrowPayload>
@@ -761,6 +773,10 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.TomorrowUpdateManyArgs<ExtArgs>
             result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TomorrowUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TomorrowPayload>[]
           }
           upsert: {
             args: Prisma.TomorrowUpsertArgs<ExtArgs>
@@ -812,6 +828,10 @@ export namespace Prisma {
             args: Prisma.YesterdayCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
+          createManyAndReturn: {
+            args: Prisma.YesterdayCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$YesterdayPayload>[]
+          }
           delete: {
             args: Prisma.YesterdayDeleteArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$YesterdayPayload>
@@ -827,6 +847,10 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.YesterdayUpdateManyArgs<ExtArgs>
             result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.YesterdayUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$YesterdayPayload>[]
           }
           upsert: {
             args: Prisma.YesterdayUpsertArgs<ExtArgs>
@@ -1299,7 +1323,39 @@ export namespace Prisma {
     channel?: boolean
   }, ExtArgs["result"]["today"]>
 
+  export type TodaySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    link?: boolean
+    league?: boolean
+    leagueLogo?: boolean
+    teamA?: boolean
+    teamAImg?: boolean
+    teamB?: boolean
+    teamBImg?: boolean
+    scoreA?: boolean
+    scoreB?: boolean
+    matchTime?: boolean
+    matchStatus?: boolean
+    matchDate?: boolean
+    channel?: boolean
+  }, ExtArgs["result"]["today"]>
 
+  export type TodaySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    link?: boolean
+    league?: boolean
+    leagueLogo?: boolean
+    teamA?: boolean
+    teamAImg?: boolean
+    teamB?: boolean
+    teamBImg?: boolean
+    scoreA?: boolean
+    scoreB?: boolean
+    matchTime?: boolean
+    matchStatus?: boolean
+    matchDate?: boolean
+    channel?: boolean
+  }, ExtArgs["result"]["today"]>
 
   export type TodaySelectScalar = {
     id?: boolean
@@ -1456,6 +1512,30 @@ export namespace Prisma {
     createMany<T extends TodayCreateManyArgs>(args?: SelectSubset<T, TodayCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
+     * Create many Todays and returns the data saved in the database.
+     * @param {TodayCreateManyAndReturnArgs} args - Arguments to create many Todays.
+     * @example
+     * // Create many Todays
+     * const today = await prisma.today.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Todays and only return the `id`
+     * const todayWithIdOnly = await prisma.today.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TodayCreateManyAndReturnArgs>(args?: SelectSubset<T, TodayCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TodayPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
      * Delete a Today.
      * @param {TodayDeleteArgs} args - Arguments to delete one Today.
      * @example
@@ -1518,6 +1598,36 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends TodayUpdateManyArgs>(args: SelectSubset<T, TodayUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Todays and returns the data updated in the database.
+     * @param {TodayUpdateManyAndReturnArgs} args - Arguments to update many Todays.
+     * @example
+     * // Update many Todays
+     * const today = await prisma.today.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Todays and only return the `id`
+     * const todayWithIdOnly = await prisma.today.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TodayUpdateManyAndReturnArgs>(args: SelectSubset<T, TodayUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TodayPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one Today.
@@ -1930,6 +2040,25 @@ export namespace Prisma {
   }
 
   /**
+   * Today createManyAndReturn
+   */
+  export type TodayCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Today
+     */
+    select?: TodaySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Today
+     */
+    omit?: TodayOmit<ExtArgs> | null
+    /**
+     * The data used to create many Todays.
+     */
+    data: TodayCreateManyInput | TodayCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
    * Today update
    */
   export type TodayUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1955,6 +2084,32 @@ export namespace Prisma {
    * Today updateMany
    */
   export type TodayUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Todays.
+     */
+    data: XOR<TodayUpdateManyMutationInput, TodayUncheckedUpdateManyInput>
+    /**
+     * Filter which Todays to update
+     */
+    where?: TodayWhereInput
+    /**
+     * Limit how many Todays to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Today updateManyAndReturn
+   */
+  export type TodayUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Today
+     */
+    select?: TodaySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Today
+     */
+    omit?: TodayOmit<ExtArgs> | null
     /**
      * The data used to update Todays.
      */
@@ -2314,7 +2469,39 @@ export namespace Prisma {
     channel?: boolean
   }, ExtArgs["result"]["tomorrow"]>
 
+  export type TomorrowSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    link?: boolean
+    league?: boolean
+    leagueLogo?: boolean
+    teamA?: boolean
+    teamAImg?: boolean
+    teamB?: boolean
+    teamBImg?: boolean
+    scoreA?: boolean
+    scoreB?: boolean
+    matchTime?: boolean
+    matchStatus?: boolean
+    matchDate?: boolean
+    channel?: boolean
+  }, ExtArgs["result"]["tomorrow"]>
 
+  export type TomorrowSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    link?: boolean
+    league?: boolean
+    leagueLogo?: boolean
+    teamA?: boolean
+    teamAImg?: boolean
+    teamB?: boolean
+    teamBImg?: boolean
+    scoreA?: boolean
+    scoreB?: boolean
+    matchTime?: boolean
+    matchStatus?: boolean
+    matchDate?: boolean
+    channel?: boolean
+  }, ExtArgs["result"]["tomorrow"]>
 
   export type TomorrowSelectScalar = {
     id?: boolean
@@ -2471,6 +2658,30 @@ export namespace Prisma {
     createMany<T extends TomorrowCreateManyArgs>(args?: SelectSubset<T, TomorrowCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
+     * Create many Tomorrows and returns the data saved in the database.
+     * @param {TomorrowCreateManyAndReturnArgs} args - Arguments to create many Tomorrows.
+     * @example
+     * // Create many Tomorrows
+     * const tomorrow = await prisma.tomorrow.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Tomorrows and only return the `id`
+     * const tomorrowWithIdOnly = await prisma.tomorrow.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TomorrowCreateManyAndReturnArgs>(args?: SelectSubset<T, TomorrowCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TomorrowPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
      * Delete a Tomorrow.
      * @param {TomorrowDeleteArgs} args - Arguments to delete one Tomorrow.
      * @example
@@ -2533,6 +2744,36 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends TomorrowUpdateManyArgs>(args: SelectSubset<T, TomorrowUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Tomorrows and returns the data updated in the database.
+     * @param {TomorrowUpdateManyAndReturnArgs} args - Arguments to update many Tomorrows.
+     * @example
+     * // Update many Tomorrows
+     * const tomorrow = await prisma.tomorrow.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Tomorrows and only return the `id`
+     * const tomorrowWithIdOnly = await prisma.tomorrow.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TomorrowUpdateManyAndReturnArgs>(args: SelectSubset<T, TomorrowUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TomorrowPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one Tomorrow.
@@ -2945,6 +3186,25 @@ export namespace Prisma {
   }
 
   /**
+   * Tomorrow createManyAndReturn
+   */
+  export type TomorrowCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tomorrow
+     */
+    select?: TomorrowSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tomorrow
+     */
+    omit?: TomorrowOmit<ExtArgs> | null
+    /**
+     * The data used to create many Tomorrows.
+     */
+    data: TomorrowCreateManyInput | TomorrowCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
    * Tomorrow update
    */
   export type TomorrowUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2970,6 +3230,32 @@ export namespace Prisma {
    * Tomorrow updateMany
    */
   export type TomorrowUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Tomorrows.
+     */
+    data: XOR<TomorrowUpdateManyMutationInput, TomorrowUncheckedUpdateManyInput>
+    /**
+     * Filter which Tomorrows to update
+     */
+    where?: TomorrowWhereInput
+    /**
+     * Limit how many Tomorrows to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Tomorrow updateManyAndReturn
+   */
+  export type TomorrowUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Tomorrow
+     */
+    select?: TomorrowSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Tomorrow
+     */
+    omit?: TomorrowOmit<ExtArgs> | null
     /**
      * The data used to update Tomorrows.
      */
@@ -3329,7 +3615,39 @@ export namespace Prisma {
     channel?: boolean
   }, ExtArgs["result"]["yesterday"]>
 
+  export type YesterdaySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    link?: boolean
+    league?: boolean
+    leagueLogo?: boolean
+    teamA?: boolean
+    teamAImg?: boolean
+    teamB?: boolean
+    teamBImg?: boolean
+    scoreA?: boolean
+    scoreB?: boolean
+    matchTime?: boolean
+    matchStatus?: boolean
+    matchDate?: boolean
+    channel?: boolean
+  }, ExtArgs["result"]["yesterday"]>
 
+  export type YesterdaySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    link?: boolean
+    league?: boolean
+    leagueLogo?: boolean
+    teamA?: boolean
+    teamAImg?: boolean
+    teamB?: boolean
+    teamBImg?: boolean
+    scoreA?: boolean
+    scoreB?: boolean
+    matchTime?: boolean
+    matchStatus?: boolean
+    matchDate?: boolean
+    channel?: boolean
+  }, ExtArgs["result"]["yesterday"]>
 
   export type YesterdaySelectScalar = {
     id?: boolean
@@ -3486,6 +3804,30 @@ export namespace Prisma {
     createMany<T extends YesterdayCreateManyArgs>(args?: SelectSubset<T, YesterdayCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
+     * Create many Yesterdays and returns the data saved in the database.
+     * @param {YesterdayCreateManyAndReturnArgs} args - Arguments to create many Yesterdays.
+     * @example
+     * // Create many Yesterdays
+     * const yesterday = await prisma.yesterday.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Yesterdays and only return the `id`
+     * const yesterdayWithIdOnly = await prisma.yesterday.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends YesterdayCreateManyAndReturnArgs>(args?: SelectSubset<T, YesterdayCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$YesterdayPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
      * Delete a Yesterday.
      * @param {YesterdayDeleteArgs} args - Arguments to delete one Yesterday.
      * @example
@@ -3548,6 +3890,36 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends YesterdayUpdateManyArgs>(args: SelectSubset<T, YesterdayUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Yesterdays and returns the data updated in the database.
+     * @param {YesterdayUpdateManyAndReturnArgs} args - Arguments to update many Yesterdays.
+     * @example
+     * // Update many Yesterdays
+     * const yesterday = await prisma.yesterday.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Yesterdays and only return the `id`
+     * const yesterdayWithIdOnly = await prisma.yesterday.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends YesterdayUpdateManyAndReturnArgs>(args: SelectSubset<T, YesterdayUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$YesterdayPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one Yesterday.
@@ -3960,6 +4332,25 @@ export namespace Prisma {
   }
 
   /**
+   * Yesterday createManyAndReturn
+   */
+  export type YesterdayCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Yesterday
+     */
+    select?: YesterdaySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Yesterday
+     */
+    omit?: YesterdayOmit<ExtArgs> | null
+    /**
+     * The data used to create many Yesterdays.
+     */
+    data: YesterdayCreateManyInput | YesterdayCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
    * Yesterday update
    */
   export type YesterdayUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3985,6 +4376,32 @@ export namespace Prisma {
    * Yesterday updateMany
    */
   export type YesterdayUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Yesterdays.
+     */
+    data: XOR<YesterdayUpdateManyMutationInput, YesterdayUncheckedUpdateManyInput>
+    /**
+     * Filter which Yesterdays to update
+     */
+    where?: YesterdayWhereInput
+    /**
+     * Limit how many Yesterdays to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Yesterday updateManyAndReturn
+   */
+  export type YesterdayUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Yesterday
+     */
+    select?: YesterdaySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Yesterday
+     */
+    omit?: YesterdayOmit<ExtArgs> | null
     /**
      * The data used to update Yesterdays.
      */
@@ -4154,69 +4571,20 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
+  export const QueryMode: {
+    default: 'default',
+    insensitive: 'insensitive'
+  };
+
+  export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
   export const NullsOrder: {
     first: 'first',
     last: 'last'
   };
 
   export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
-
-
-  export const TodayOrderByRelevanceFieldEnum: {
-    link: 'link',
-    league: 'league',
-    leagueLogo: 'leagueLogo',
-    teamA: 'teamA',
-    teamAImg: 'teamAImg',
-    teamB: 'teamB',
-    teamBImg: 'teamBImg',
-    scoreA: 'scoreA',
-    scoreB: 'scoreB',
-    matchTime: 'matchTime',
-    matchStatus: 'matchStatus',
-    matchDate: 'matchDate',
-    channel: 'channel'
-  };
-
-  export type TodayOrderByRelevanceFieldEnum = (typeof TodayOrderByRelevanceFieldEnum)[keyof typeof TodayOrderByRelevanceFieldEnum]
-
-
-  export const TomorrowOrderByRelevanceFieldEnum: {
-    link: 'link',
-    league: 'league',
-    leagueLogo: 'leagueLogo',
-    teamA: 'teamA',
-    teamAImg: 'teamAImg',
-    teamB: 'teamB',
-    teamBImg: 'teamBImg',
-    scoreA: 'scoreA',
-    scoreB: 'scoreB',
-    matchTime: 'matchTime',
-    matchStatus: 'matchStatus',
-    matchDate: 'matchDate',
-    channel: 'channel'
-  };
-
-  export type TomorrowOrderByRelevanceFieldEnum = (typeof TomorrowOrderByRelevanceFieldEnum)[keyof typeof TomorrowOrderByRelevanceFieldEnum]
-
-
-  export const YesterdayOrderByRelevanceFieldEnum: {
-    link: 'link',
-    league: 'league',
-    leagueLogo: 'leagueLogo',
-    teamA: 'teamA',
-    teamAImg: 'teamAImg',
-    teamB: 'teamB',
-    teamBImg: 'teamBImg',
-    scoreA: 'scoreA',
-    scoreB: 'scoreB',
-    matchTime: 'matchTime',
-    matchStatus: 'matchStatus',
-    matchDate: 'matchDate',
-    channel: 'channel'
-  };
-
-  export type YesterdayOrderByRelevanceFieldEnum = (typeof YesterdayOrderByRelevanceFieldEnum)[keyof typeof YesterdayOrderByRelevanceFieldEnum]
 
 
   /**
@@ -4232,6 +4600,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
    * Reference to a field of type 'String'
    */
   export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
@@ -4239,9 +4614,23 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'String[]'
+   */
+  export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
   /**
    * Deep Input Types
@@ -4283,7 +4672,6 @@ export namespace Prisma {
     matchStatus?: SortOrderInput | SortOrder
     matchDate?: SortOrderInput | SortOrder
     channel?: SortOrder
-    _relevance?: TodayOrderByRelevanceInput
   }
 
   export type TodayWhereUniqueInput = Prisma.AtLeast<{
@@ -4383,7 +4771,6 @@ export namespace Prisma {
     matchStatus?: SortOrderInput | SortOrder
     matchDate?: SortOrderInput | SortOrder
     channel?: SortOrder
-    _relevance?: TomorrowOrderByRelevanceInput
   }
 
   export type TomorrowWhereUniqueInput = Prisma.AtLeast<{
@@ -4483,7 +4870,6 @@ export namespace Prisma {
     matchStatus?: SortOrderInput | SortOrder
     matchDate?: SortOrderInput | SortOrder
     channel?: SortOrder
-    _relevance?: YesterdayOrderByRelevanceInput
   }
 
   export type YesterdayWhereUniqueInput = Prisma.AtLeast<{
@@ -4898,8 +5284,8 @@ export namespace Prisma {
 
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -4909,8 +5295,8 @@ export namespace Prisma {
 
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -4918,14 +5304,14 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
+    mode?: QueryMode
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -4933,19 +5319,13 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
+    mode?: QueryMode
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
-  }
-
-  export type TodayOrderByRelevanceInput = {
-    fields: TodayOrderByRelevanceFieldEnum | TodayOrderByRelevanceFieldEnum[]
-    sort: SortOrder
-    search: string
   }
 
   export type TodayCountOrderByAggregateInput = {
@@ -5009,8 +5389,8 @@ export namespace Prisma {
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -5025,8 +5405,8 @@ export namespace Prisma {
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -5034,7 +5414,7 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
+    mode?: QueryMode
     not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
@@ -5043,8 +5423,8 @@ export namespace Prisma {
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -5052,17 +5432,11 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
+    mode?: QueryMode
     not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type TomorrowOrderByRelevanceInput = {
-    fields: TomorrowOrderByRelevanceFieldEnum | TomorrowOrderByRelevanceFieldEnum[]
-    sort: SortOrder
-    search: string
   }
 
   export type TomorrowCountOrderByAggregateInput = {
@@ -5122,12 +5496,6 @@ export namespace Prisma {
 
   export type TomorrowSumOrderByAggregateInput = {
     id?: SortOrder
-  }
-
-  export type YesterdayOrderByRelevanceInput = {
-    fields: YesterdayOrderByRelevanceFieldEnum | YesterdayOrderByRelevanceFieldEnum[]
-    sort: SortOrder
-    search: string
   }
 
   export type YesterdayCountOrderByAggregateInput = {
@@ -5207,8 +5575,8 @@ export namespace Prisma {
 
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -5218,8 +5586,8 @@ export namespace Prisma {
 
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -5227,14 +5595,13 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
   export type NestedStringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -5242,14 +5609,13 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -5264,8 +5630,8 @@ export namespace Prisma {
 
   export type NestedFloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
@@ -5275,8 +5641,8 @@ export namespace Prisma {
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -5284,7 +5650,6 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
     not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
@@ -5293,8 +5658,8 @@ export namespace Prisma {
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -5302,7 +5667,6 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
     not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
@@ -5311,8 +5675,8 @@ export namespace Prisma {
 
   export type NestedIntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>

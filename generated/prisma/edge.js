@@ -148,57 +148,14 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
+exports.Prisma.QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+};
+
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
-};
-
-exports.Prisma.TodayOrderByRelevanceFieldEnum = {
-  link: 'link',
-  league: 'league',
-  leagueLogo: 'leagueLogo',
-  teamA: 'teamA',
-  teamAImg: 'teamAImg',
-  teamB: 'teamB',
-  teamBImg: 'teamBImg',
-  scoreA: 'scoreA',
-  scoreB: 'scoreB',
-  matchTime: 'matchTime',
-  matchStatus: 'matchStatus',
-  matchDate: 'matchDate',
-  channel: 'channel'
-};
-
-exports.Prisma.TomorrowOrderByRelevanceFieldEnum = {
-  link: 'link',
-  league: 'league',
-  leagueLogo: 'leagueLogo',
-  teamA: 'teamA',
-  teamAImg: 'teamAImg',
-  teamB: 'teamB',
-  teamBImg: 'teamBImg',
-  scoreA: 'scoreA',
-  scoreB: 'scoreB',
-  matchTime: 'matchTime',
-  matchStatus: 'matchStatus',
-  matchDate: 'matchDate',
-  channel: 'channel'
-};
-
-exports.Prisma.YesterdayOrderByRelevanceFieldEnum = {
-  link: 'link',
-  league: 'league',
-  leagueLogo: 'leagueLogo',
-  teamA: 'teamA',
-  teamAImg: 'teamAImg',
-  teamB: 'teamB',
-  teamBImg: 'teamBImg',
-  scoreA: 'scoreA',
-  scoreB: 'scoreB',
-  matchTime: 'matchTime',
-  matchStatus: 'matchStatus',
-  matchDate: 'matchDate',
-  channel: 'channel'
 };
 
 
@@ -245,7 +202,7 @@ const config = {
   "datasourceNames": [
     "db"
   ],
-  "activeProvider": "mysql",
+  "activeProvider": "postgresql",
   "inlineDatasources": {
     "db": {
       "url": {
@@ -254,8 +211,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Today {\n  id          Int     @id @default(autoincrement())\n  link        String  @default(\"#\")\n  league      String?\n  leagueLogo  String?\n  teamA       String?\n  teamAImg    String?\n  teamB       String?\n  teamBImg    String?\n  scoreA      String?\n  scoreB      String?\n  matchTime   String?\n  matchStatus String?\n  matchDate   String?\n  channel     String  @default(\"Not specified\")\n}\n\nmodel Tomorrow {\n  id          Int     @id @default(autoincrement())\n  link        String  @default(\"#\")\n  league      String?\n  leagueLogo  String?\n  teamA       String?\n  teamAImg    String?\n  teamB       String?\n  teamBImg    String?\n  scoreA      String?\n  scoreB      String?\n  matchTime   String?\n  matchStatus String?\n  matchDate   String?\n  channel     String  @default(\"Not specified\")\n}\n\nmodel Yesterday {\n  id          Int     @id @default(autoincrement())\n  link        String  @default(\"#\")\n  league      String?\n  leagueLogo  String?\n  teamA       String?\n  teamAImg    String?\n  teamB       String?\n  teamBImg    String?\n  scoreA      String?\n  scoreB      String?\n  matchTime   String?\n  matchStatus String?\n  matchDate   String?\n  channel     String  @default(\"Not specified\")\n}\n",
-  "inlineSchemaHash": "db7dcebf9f4ed5d75e9114f47c815dd576fa5652644ee8006e843b62c1b0959c",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Today {\n  id          Int     @id @default(autoincrement())\n  link        String  @default(\"#\")\n  league      String?\n  leagueLogo  String?\n  teamA       String?\n  teamAImg    String?\n  teamB       String?\n  teamBImg    String?\n  scoreA      String?\n  scoreB      String?\n  matchTime   String?\n  matchStatus String?\n  matchDate   String?\n  channel     String  @default(\"Not specified\")\n}\n\nmodel Tomorrow {\n  id          Int     @id @default(autoincrement())\n  link        String  @default(\"#\")\n  league      String?\n  leagueLogo  String?\n  teamA       String?\n  teamAImg    String?\n  teamB       String?\n  teamBImg    String?\n  scoreA      String?\n  scoreB      String?\n  matchTime   String?\n  matchStatus String?\n  matchDate   String?\n  channel     String  @default(\"Not specified\")\n}\n\nmodel Yesterday {\n  id          Int     @id @default(autoincrement())\n  link        String  @default(\"#\")\n  league      String?\n  leagueLogo  String?\n  teamA       String?\n  teamAImg    String?\n  teamB       String?\n  teamBImg    String?\n  scoreA      String?\n  scoreB      String?\n  matchTime   String?\n  matchStatus String?\n  matchDate   String?\n  channel     String  @default(\"Not specified\")\n}\n",
+  "inlineSchemaHash": "af56004e0f7f352e66335324c0d9131cdd6c7f02d2e5ec9a54d1081c7e4b88b3",
   "copyEngine": true
 }
 config.dirname = '/'

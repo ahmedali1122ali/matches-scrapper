@@ -176,57 +176,14 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
+exports.Prisma.QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+};
+
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
-};
-
-exports.Prisma.TodayOrderByRelevanceFieldEnum = {
-  link: 'link',
-  league: 'league',
-  leagueLogo: 'leagueLogo',
-  teamA: 'teamA',
-  teamAImg: 'teamAImg',
-  teamB: 'teamB',
-  teamBImg: 'teamBImg',
-  scoreA: 'scoreA',
-  scoreB: 'scoreB',
-  matchTime: 'matchTime',
-  matchStatus: 'matchStatus',
-  matchDate: 'matchDate',
-  channel: 'channel'
-};
-
-exports.Prisma.TomorrowOrderByRelevanceFieldEnum = {
-  link: 'link',
-  league: 'league',
-  leagueLogo: 'leagueLogo',
-  teamA: 'teamA',
-  teamAImg: 'teamAImg',
-  teamB: 'teamB',
-  teamBImg: 'teamBImg',
-  scoreA: 'scoreA',
-  scoreB: 'scoreB',
-  matchTime: 'matchTime',
-  matchStatus: 'matchStatus',
-  matchDate: 'matchDate',
-  channel: 'channel'
-};
-
-exports.Prisma.YesterdayOrderByRelevanceFieldEnum = {
-  link: 'link',
-  league: 'league',
-  leagueLogo: 'leagueLogo',
-  teamA: 'teamA',
-  teamAImg: 'teamAImg',
-  teamB: 'teamB',
-  teamBImg: 'teamBImg',
-  scoreA: 'scoreA',
-  scoreB: 'scoreB',
-  matchTime: 'matchTime',
-  matchStatus: 'matchStatus',
-  matchDate: 'matchDate',
-  channel: 'channel'
 };
 
 

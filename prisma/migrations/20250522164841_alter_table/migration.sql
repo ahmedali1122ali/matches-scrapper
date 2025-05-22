@@ -1,3 +1,0 @@
--- AlterTable
-ALTER TABLE `Tomorrow` ADD COLUMN `scoreA` VARCHAR(191) NULL,
-    ADD COLUMN `scoreB` VARCHAR(191) NULL;
