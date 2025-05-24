@@ -63,12 +63,11 @@ async function scrapeAndSave() {
   }
 }
 
-cron.schedule('*/5 * * * *', scrapeAndSave, {
+cron.schedule('0 0 * * *', scrapeAndSave, {
   timezone: TIMEZONE,
 });
 
-app.listen(PORT, async () => {
-  await scrapeAndSave();
+app.listen(PORT, () => {
+  scrapeAndSave();
   console.log(`Server is running on http://localhost:${PORT}`);
 });
-
