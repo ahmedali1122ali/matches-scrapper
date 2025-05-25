@@ -63,7 +63,7 @@ async function scrapeAndSave() {
   }
 }
 
-cron.schedule('0 0 * * *', scrapeAndSave, {
+cron.schedule('*/5 * * * *', scrapeAndSave, {
   timezone: TIMEZONE,
 });
 
