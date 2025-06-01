@@ -1,0 +1,6 @@
+steps:
+- name: "gcr.io/cloud-builders/docker"
+  args: ["build", "-t", "gcr.io/$PROJECT_ID/web-scraper", "."]
+- name: "gcr.io/cloud-builders/gcloud"
+  args: ["run", "deploy", "web-scraper", "--image=gcr.io/$PROJECT_ID/web-scraper", "--platform=managed", "--region=us-central1", "--allow-unauthenticated"]
+timeout: 600s
