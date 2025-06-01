@@ -4,3 +4,7 @@ steps:
 - name: "gcr.io/cloud-builders/gcloud"
   args: ["run", "deploy", "web-scraper", "--image=gcr.io/$PROJECT_ID/web-scraper", "--platform=managed", "--region=us-central1", "--allow-unauthenticated"]
 timeout: 600s
+git add Dockerfile cloudbuild.yaml
+git commit -m "Added Dockerfile and cloudbuild.yaml for Cloud Run"
+git push origin main
+
